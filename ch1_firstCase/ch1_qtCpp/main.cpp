@@ -13,7 +13,7 @@ int main()
     /* create 10 movies */
     std::vector<Movie> movies;
     for(int i=0;i<10;i++) {
-        Movie tempMovie("Movie"+std::to_string(i+1), i+1);
+        Movie tempMovie("Movie"+std::to_string(i+1), (i+1)%3);
         movies.push_back(tempMovie);
     }
 

@@ -54,7 +54,7 @@ std::__cxx11::string Customer::statement()
     //添加脚注
     result += "Amount owed is " + std::to_string(totalAmount) + "\n";
     result += "You earned " + std::to_string(frequentRenterPoints) +
-            " frequent renter points";
+            " frequent renter points" + "\n";
     return result;
 }
 
