@@ -10,6 +10,7 @@ public:
     int getDaysRented();
     Movie getMovie();
     double getCharge();
+    int getFrequentRenterPoints();
 
 private:
     Movie _movie;       //租赁的影片

@@ -38,3 +38,13 @@ double Rental::getCharge()
     return result;
 }
 
+int Rental::getFrequentRenterPoints()
+{
+    //积分累加条件：新版本的片子，借的时间大于1天
+    if((getMovie().getPriceCode() == 1) && getDaysRented() > 1) {
+        return 2;
+    } else {
+        return 1;                   //每借一张加1个积分点
+    }
+}
+

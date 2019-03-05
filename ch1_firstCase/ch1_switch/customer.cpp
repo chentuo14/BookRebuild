@@ -24,12 +24,8 @@ std::__cxx11::string Customer::statement()
     std::vector<Rental>::iterator iter = _rentals.begin();
     for(;iter != _rentals.end();++iter) {
         Rental each = *iter;
+        frequentRenterPoints+=each.getFrequentRenterPoints();
 
-        frequentRenterPoints++;         //每借一张加1个积分点
-        //积分累加条件：新版本的片子，借的时间大于1天
-        if((each.getMovie().getPriceCode() == 1) && each.getDaysRented() > 1) {
-            frequentRenterPoints++;
-        }
         //添加详单
         result += "\t" + each.getMovie().getTitle() + "\t"
                 + std::to_string(each.getCharge()) + "\n";
