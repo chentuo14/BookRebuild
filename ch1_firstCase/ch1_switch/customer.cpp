@@ -51,23 +51,6 @@ std::vector<Rental> &Customer::getRentals()
 
 double Customer::amountFor(Rental aRental)
 {
-    double result = 0;
-    switch(aRental.getMovie().getPriceCode()) {
-    case 0:             //普通片，起步价为2元，租期超过2天的部分每天1.5元
-        result += 2;
-        if(aRental.getDaysRented() > 2)
-            result += (aRental.getDaysRented() - 2) * 1.5;
-        break;
-    case 1:             //新片，每天3元
-        result += aRental.getDaysRented() * 3;
-        break;
-    case 2:             //儿童片，起步价1.5元，租期超过3天的部分每天1.5元
-        result += 1.5;
-        if(aRental.getDaysRented() > 3)
-            result += (aRental.getDaysRented() - 3) * 1.5;
-        break;
-    }
-
-    return result;
+    return aRental.getCharge();
 }
 
