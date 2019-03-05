@@ -16,6 +16,7 @@ public:
     std::string statement();
     std::vector<Rental>& getRentals();
     double amountFor(Rental aRental);
+    double getTotalCharge();
 
 private:
     std::string _name;                  //顾客名

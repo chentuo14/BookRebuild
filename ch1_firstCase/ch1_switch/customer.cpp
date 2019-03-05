@@ -16,8 +16,7 @@ std::__cxx11::string Customer::getName()
 }
 
 std::__cxx11::string Customer::statement()
-{
-    double totalAmount = 0;                 //总金额
+{         
     int frequentRenterPoints = 0;           //积分点
     
     std::string result = "Rental Record for " + getName() + "\n";
@@ -29,10 +28,9 @@ std::__cxx11::string Customer::statement()
         //添加详单
         result += "\t" + each.getMovie().getTitle() + "\t"
                 + std::to_string(each.getCharge()) + "\n";
-        totalAmount += each.getCharge();
     }
     //添加脚注
-    result += "Amount owed is " + std::to_string(totalAmount) + "\n";
+    result += "Amount owed is " + std::to_string(getTotalCharge()) + "\n";
     result += "You earned " + std::to_string(frequentRenterPoints) +
             " frequent renter points" + "\n";
     return result;
@@ -46,5 +44,16 @@ std::vector<Rental> &Customer::getRentals()
 double Customer::amountFor(Rental aRental)
 {
     return aRental.getCharge();
+}
+
+double Customer::getTotalCharge()
+{
+    double result = 0;              //总金额
+    std::vector<Rental>::iterator iter = _rentals.begin();
+    for(;iter != _rentals.end();++iter) {
+        Rental each = *iter;
+        result += each.getCharge();
+    }
+    return result;
 }
 
