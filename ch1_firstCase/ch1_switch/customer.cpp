@@ -23,10 +23,8 @@ std::__cxx11::string Customer::statement()
     std::string result = "Rental Record for " + getName() + "\n";
     std::vector<Rental>::iterator iter = _rentals.begin();
     for(;iter != _rentals.end();++iter) {
-        double thisAmount = 0;              //当前单个租赁金额
         Rental each = *iter;
 
-        thisAmount = amountFor(each);
         frequentRenterPoints++;         //每借一张加1个积分点
         //积分累加条件：新版本的片子，借的时间大于1天
         if((each.getMovie().getPriceCode() == 1) && each.getDaysRented() > 1) {
@@ -34,8 +32,8 @@ std::__cxx11::string Customer::statement()
         }
         //添加详单
         result += "\t" + each.getMovie().getTitle() + "\t"
-                + std::to_string(thisAmount) + "\n";
-        totalAmount += thisAmount;
+                + std::to_string(each.getCharge()) + "\n";
+        totalAmount += each.getCharge();
     }
     //添加脚注
     result += "Amount owed is " + std::to_string(totalAmount) + "\n";
