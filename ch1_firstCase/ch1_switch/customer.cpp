@@ -26,21 +26,7 @@ std::__cxx11::string Customer::statement()
         double thisAmount = 0;              //当前单个租赁金额
         Rental each = *iter;
 
-        switch(each.getMovie().getPriceCode()) {
-        case 0:             //普通片，起步价为2元，租期超过2天的部分每天1.5元
-            thisAmount += 2;
-            if(each.getDaysRented() > 2)
-                thisAmount += (each.getDaysRented() - 2) * 1.5;
-            break;
-        case 1:             //新片，每天3元
-            thisAmount += each.getDaysRented() * 3;
-            break;
-        case 2:             //儿童片，起步价1.5元，租期超过3天的部分每天1.5元
-            thisAmount += 1.5;
-            if(each.getDaysRented() > 3)
-                thisAmount += (each.getDaysRented() - 3) * 1.5;
-            break;
-        }
+        thisAmount = amountFor(each);
         frequentRenterPoints++;         //每借一张加1个积分点
         //积分累加条件：新版本的片子，借的时间大于1天
         if((each.getMovie().getPriceCode() == 1) && each.getDaysRented() > 1) {
@@ -61,5 +47,27 @@ std::__cxx11::string Customer::statement()
 std::vector<Rental> &Customer::getRentals()
 {
     return _rentals;
+}
+
+double Customer::amountFor(Rental each)
+{
+    double thisAmount = 0;
+    switch(each.getMovie().getPriceCode()) {
+    case 0:             //普通片，起步价为2元，租期超过2天的部分每天1.5元
+        thisAmount += 2;
+        if(each.getDaysRented() > 2)
+            thisAmount += (each.getDaysRented() - 2) * 1.5;
+        break;
+    case 1:             //新片，每天3元
+        thisAmount += each.getDaysRented() * 3;
+        break;
+    case 2:             //儿童片，起步价1.5元，租期超过3天的部分每天1.5元
+        thisAmount += 1.5;
+        if(each.getDaysRented() > 3)
+            thisAmount += (each.getDaysRented() - 3) * 1.5;
+        break;
+    }
+
+    return thisAmount;
 }
 
