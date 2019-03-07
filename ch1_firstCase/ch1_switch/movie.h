@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include "price.h"
 
+class Price;
 class Movie
 {
 public:
@@ -23,8 +25,8 @@ public:
 
 
 private:
-    std::string _title;                 //影片名
-    int _priceCode;                     //价格码
+    std::string _title;                     //影片名
+    Price *_price;                          //价格码
 };
 
 

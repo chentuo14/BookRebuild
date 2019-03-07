@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     customer.cpp \
     movie.cpp \
-    rental.cpp
+    rental.cpp \
+    price.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -14,5 +15,6 @@ qtcAddDeployment()
 HEADERS += \
     customer.h \
     movie.h \
-    rental.h
+    rental.h \
+    price.h
 

@@ -32,7 +32,7 @@ int main()
 
     //print out all movies information;
     const std::vector<Movie>::size_type numMovies = movies.size();
-    for(int i=0;i<numMovies;++i) {
+    for(unsigned int i=0;i<numMovies;++i) {
         Movie tempMovie = movies[i];
         std::cout << " the Tile of the "<<i+1 << "("
                  << tempMovie.getTitle() << "," << tempMovie.getPriceCode() << ")"
@@ -42,19 +42,19 @@ int main()
 
     //print out all customers information
     const std::vector<Customer>::size_type numCustomers = customers.size();
-    for(int i=0;i<numCustomers;++i) {
+    for(unsigned int i=0;i<numCustomers;++i) {
         Customer tempCust = customers[i];
         std::cout << "the " << std::to_string(i+1) << " the customer " << tempCust.getName()
                   << " has rented these movies:" << std::endl;
         const std::vector<Rental>::size_type numRentals = tempCust.getRentals().size();
-        for(int j=0;j<numRentals;++j) {
+        for(unsigned int j=0;j<numRentals;++j) {
             std::cout << "    (" << tempCust.getRentals()[j].getMovie().getTitle()
                       << ", " << tempCust.getRentals()[j].getDaysRented() << ")" << std::endl;
         }
     }
     std::cout << std::endl;
 
-    for(int i=0;i<numCustomers;++i) {
+    for(unsigned int i=0;i<numCustomers;++i) {
         Customer tempCust = customers[i];
         std::cout << tempCust.statement() << std::endl;
     }
