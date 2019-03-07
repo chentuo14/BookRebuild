@@ -19,6 +19,7 @@ public:
     void setPriceCode(int arg);
     std::string getTitle();
     double getCharge(int daysRented);
+    int getFrequentRenterPoints(int daysRented);
 
 
 private:
