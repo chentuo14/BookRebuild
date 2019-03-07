@@ -54,9 +54,9 @@ int main()
     }
     std::cout << std::endl;
 
-    for(unsigned int i=0;i<numCustomers;++i) {
-        Customer tempCust = customers[i];
-        std::cout << tempCust.statement() << std::endl;
+    auto iter = customers.begin();
+    for(;iter != customers.end(); ++ iter) {
+        std::cout << iter->statement() << std::endl;;
     }
 
     return 0;

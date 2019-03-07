@@ -40,11 +40,6 @@ double Movie::getCharge(int daysRented)
 
 int Movie::getFrequentRenterPoints(int daysRented)
 {
-    //积分累加条件：新版本的片子，借的时间大于1天
-    if((getPriceCode() == 1) && daysRented > 1) {
-        return 2;
-    } else {
-        return 1;       //每借一张加1个积分点
-    }
+    return _price->getFrequentRenterPoints(daysRented);
 }
 
