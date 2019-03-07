@@ -7,17 +7,19 @@
 class Movie
 {
 public:
-    Movie(std::string title = "empty", int price = 0);
-
-    int getPriceCode();
-    void setPriceCode(int arg);
-    std::string getTitle();
-
     enum category {
         REGULAR = 0,            //普通影片
         NEW_RELEASE,            //新片
         CHILDRENS               //儿童影片
     };
+
+    Movie(std::string title = "empty", int price = 0);
+
+    int getPriceCode();
+    void setPriceCode(int arg);
+    std::string getTitle();
+    double getCharge(int daysRented);
+
 
 private:
     std::string _title;                 //影片名
