@@ -13,9 +13,12 @@ public:
     void setPriceCode(int arg);
     std::string getTitle();
 
-    static const int REGULAR;          //普通影片
-    static const int NEW_RELEASE;      //新片
-    static const int CHILDRENS;        //儿童影片
+    enum category {
+        REGULAR = 0,            //普通影片
+        NEW_RELEASE,            //新片
+        CHILDRENS               //儿童影片
+    };
+
 private:
     std::string _title;                 //影片名
     int _priceCode;                     //价格码
