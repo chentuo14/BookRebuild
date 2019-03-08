@@ -8,7 +8,7 @@ class Price
 public:
     virtual int getPriceCode() = 0;
     virtual double getCharge(int daysRented) = 0;
-    int getFrequentRenterPoints(int daysRented);
+    virtual int getFrequentRenterPoints(int daysRented);
 };
 
 class ChildrensPrice : public Price
